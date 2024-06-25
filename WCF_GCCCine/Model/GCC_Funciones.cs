@@ -12,13 +12,15 @@ namespace WCF_GCCCine.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class GCC_Sillas
+    public partial class GCC_Funciones
     {
-        public int SillasId { get; set; }
+        public int FuncionId { get; set; }
+        public Nullable<int> PeliculaId { get; set; }
         public Nullable<int> SalaId { get; set; }
-        public string Row { get; set; }
-        public Nullable<int> NumeroSilla { get; set; }
+        public Nullable<System.DateTime> FechaFuncion { get; set; }
+        public Nullable<decimal> Precio { get; set; }
     
+        public virtual GCC_Peliculas GCC_Peliculas { get; set; }
         public virtual GCC_Salas GCC_Salas { get; set; }
     }
 }

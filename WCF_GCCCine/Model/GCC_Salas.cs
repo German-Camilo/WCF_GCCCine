@@ -11,23 +11,23 @@ namespace WCF_GCCCine.Model
 {
     using System;
     using System.Collections.Generic;
-    using WCF_GCCCine.Clases;
-
+    
     public partial class GCC_Salas
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public GCC_Salas()
         {
-            this.Funciones = new HashSet<Funciones>();
+            this.GCC_Funciones = new HashSet<GCC_Funciones>();
             this.GCC_Sillas = new HashSet<GCC_Sillas>();
         }
     
         public int SalaId { get; set; }
         public string Nombre { get; set; }
+        public string Location { get; set; }
         public Nullable<int> Capacidad { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Funciones> Funciones { get; set; }
+        public virtual ICollection<GCC_Funciones> GCC_Funciones { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GCC_Sillas> GCC_Sillas { get; set; }
     }

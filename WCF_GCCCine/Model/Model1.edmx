@@ -4,8 +4,8 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="GCCCineModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Funciones">
+      <Schema Namespace="masterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="GCC_Funciones">
           <Key>
             <PropertyRef Name="FuncionId" />
           </Key>
@@ -23,6 +23,7 @@
           <Property Name="Titulo" Type="nvarchar" MaxLength="200" />
           <Property Name="Genero" Type="nvarchar" MaxLength="50" />
           <Property Name="Duracion" Type="int" />
+          <Property Name="Rating" Type="decimal" Precision="3" Scale="2" />
         </EntityType>
         <EntityType Name="GCC_Salas">
           <Key>
@@ -30,6 +31,7 @@
           </Key>
           <Property Name="SalaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nvarchar" MaxLength="100" />
+          <Property Name="Location" Type="nvarchar" MaxLength="200" />
           <Property Name="Capacidad" Type="int" />
         </EntityType>
         <EntityType Name="GCC_Sillas">
@@ -38,33 +40,34 @@
           </Key>
           <Property Name="SillasId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SalaId" Type="int" />
-          <Property Name="NumeroSilla" Type="nvarchar" MaxLength="10" />
+          <Property Name="Row" Type="nvarchar" MaxLength="5" />
+          <Property Name="NumeroSilla" Type="int" />
         </EntityType>
-        <Association Name="FK__Funciones__Pelic__2A4B4B5E">
+        <Association Name="FK__GCC_Funci__Pelic__07E124C1">
           <End Role="GCC_Peliculas" Type="Self.GCC_Peliculas" Multiplicity="0..1" />
-          <End Role="Funciones" Type="Self.Funciones" Multiplicity="*" />
+          <End Role="GCC_Funciones" Type="Self.GCC_Funciones" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="GCC_Peliculas">
               <PropertyRef Name="PeliculaId" />
             </Principal>
-            <Dependent Role="Funciones">
+            <Dependent Role="GCC_Funciones">
               <PropertyRef Name="PeliculaId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Funciones__SalaI__2B3F6F97">
+        <Association Name="FK__GCC_Funci__SalaI__08D548FA">
           <End Role="GCC_Salas" Type="Self.GCC_Salas" Multiplicity="0..1" />
-          <End Role="Funciones" Type="Self.Funciones" Multiplicity="*" />
+          <End Role="GCC_Funciones" Type="Self.GCC_Funciones" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="GCC_Salas">
               <PropertyRef Name="SalaId" />
             </Principal>
-            <Dependent Role="Funciones">
+            <Dependent Role="GCC_Funciones">
               <PropertyRef Name="SalaId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__GCC_Silla__SalaI__2E1BDC42">
+        <Association Name="FK__GCC_Silla__SalaI__041093DD">
           <End Role="GCC_Salas" Type="Self.GCC_Salas" Multiplicity="0..1" />
           <End Role="GCC_Sillas" Type="Self.GCC_Sillas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -76,20 +79,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="GCCCineModelStoreContainer">
-          <EntitySet Name="Funciones" EntityType="Self.Funciones" Schema="dbo" store:Type="Tables" />
+        <EntityContainer Name="masterModelStoreContainer">
+          <EntitySet Name="GCC_Funciones" EntityType="Self.GCC_Funciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GCC_Peliculas" EntityType="Self.GCC_Peliculas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GCC_Salas" EntityType="Self.GCC_Salas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GCC_Sillas" EntityType="Self.GCC_Sillas" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Funciones__Pelic__2A4B4B5E" Association="Self.FK__Funciones__Pelic__2A4B4B5E">
+          <AssociationSet Name="FK__GCC_Funci__Pelic__07E124C1" Association="Self.FK__GCC_Funci__Pelic__07E124C1">
             <End Role="GCC_Peliculas" EntitySet="GCC_Peliculas" />
-            <End Role="Funciones" EntitySet="Funciones" />
+            <End Role="GCC_Funciones" EntitySet="GCC_Funciones" />
           </AssociationSet>
-          <AssociationSet Name="FK__Funciones__SalaI__2B3F6F97" Association="Self.FK__Funciones__SalaI__2B3F6F97">
+          <AssociationSet Name="FK__GCC_Funci__SalaI__08D548FA" Association="Self.FK__GCC_Funci__SalaI__08D548FA">
             <End Role="GCC_Salas" EntitySet="GCC_Salas" />
-            <End Role="Funciones" EntitySet="Funciones" />
+            <End Role="GCC_Funciones" EntitySet="GCC_Funciones" />
           </AssociationSet>
-          <AssociationSet Name="FK__GCC_Silla__SalaI__2E1BDC42" Association="Self.FK__GCC_Silla__SalaI__2E1BDC42">
+          <AssociationSet Name="FK__GCC_Silla__SalaI__041093DD" Association="Self.FK__GCC_Silla__SalaI__041093DD">
             <End Role="GCC_Salas" EntitySet="GCC_Salas" />
             <End Role="GCC_Sillas" EntitySet="GCC_Sillas" />
           </AssociationSet>
@@ -98,8 +101,8 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="GCCCineModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Funciones">
+      <Schema Namespace="masterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="GCC_Funciones">
           <Key>
             <PropertyRef Name="FuncionId" />
           </Key>
@@ -108,8 +111,8 @@
           <Property Name="SalaId" Type="Int32" />
           <Property Name="FechaFuncion" Type="DateTime" Precision="3" />
           <Property Name="Precio" Type="Decimal" Precision="10" Scale="2" />
-          <NavigationProperty Name="GCC_Peliculas" Relationship="Self.FK__Funciones__Pelic__2A4B4B5E" FromRole="Funciones" ToRole="GCC_Peliculas" />
-          <NavigationProperty Name="GCC_Salas" Relationship="Self.FK__Funciones__SalaI__2B3F6F97" FromRole="Funciones" ToRole="GCC_Salas" />
+          <NavigationProperty Name="GCC_Peliculas" Relationship="Self.FK__GCC_Funci__Pelic__07E124C1" FromRole="GCC_Funciones" ToRole="GCC_Peliculas" />
+          <NavigationProperty Name="GCC_Salas" Relationship="Self.FK__GCC_Funci__SalaI__08D548FA" FromRole="GCC_Funciones" ToRole="GCC_Salas" />
         </EntityType>
         <EntityType Name="GCC_Peliculas">
           <Key>
@@ -119,7 +122,8 @@
           <Property Name="Titulo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Genero" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Duracion" Type="Int32" />
-          <NavigationProperty Name="Funciones" Relationship="Self.FK__Funciones__Pelic__2A4B4B5E" FromRole="GCC_Peliculas" ToRole="Funciones" />
+          <Property Name="Rating" Type="Decimal" Precision="3" Scale="2" />
+          <NavigationProperty Name="GCC_Funciones" Relationship="Self.FK__GCC_Funci__Pelic__07E124C1" FromRole="GCC_Peliculas" ToRole="GCC_Funciones" />
         </EntityType>
         <EntityType Name="GCC_Salas">
           <Key>
@@ -127,9 +131,10 @@
           </Key>
           <Property Name="SalaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Capacidad" Type="Int32" />
-          <NavigationProperty Name="Funciones" Relationship="Self.FK__Funciones__SalaI__2B3F6F97" FromRole="GCC_Salas" ToRole="Funciones" />
-          <NavigationProperty Name="GCC_Sillas" Relationship="Self.FK__GCC_Silla__SalaI__2E1BDC42" FromRole="GCC_Salas" ToRole="GCC_Sillas" />
+          <NavigationProperty Name="GCC_Funciones" Relationship="Self.FK__GCC_Funci__SalaI__08D548FA" FromRole="GCC_Salas" ToRole="GCC_Funciones" />
+          <NavigationProperty Name="GCC_Sillas" Relationship="Self.FK__GCC_Silla__SalaI__041093DD" FromRole="GCC_Salas" ToRole="GCC_Sillas" />
         </EntityType>
         <EntityType Name="GCC_Sillas">
           <Key>
@@ -137,34 +142,35 @@
           </Key>
           <Property Name="SillasId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SalaId" Type="Int32" />
-          <Property Name="NumeroSilla" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="GCC_Salas" Relationship="Self.FK__GCC_Silla__SalaI__2E1BDC42" FromRole="GCC_Sillas" ToRole="GCC_Salas" />
+          <Property Name="Row" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="NumeroSilla" Type="Int32" />
+          <NavigationProperty Name="GCC_Salas" Relationship="Self.FK__GCC_Silla__SalaI__041093DD" FromRole="GCC_Sillas" ToRole="GCC_Salas" />
         </EntityType>
-        <Association Name="FK__Funciones__Pelic__2A4B4B5E">
+        <Association Name="FK__GCC_Funci__Pelic__07E124C1">
           <End Role="GCC_Peliculas" Type="Self.GCC_Peliculas" Multiplicity="0..1" />
-          <End Role="Funciones" Type="Self.Funciones" Multiplicity="*" />
+          <End Role="GCC_Funciones" Type="Self.GCC_Funciones" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="GCC_Peliculas">
               <PropertyRef Name="PeliculaId" />
             </Principal>
-            <Dependent Role="Funciones">
+            <Dependent Role="GCC_Funciones">
               <PropertyRef Name="PeliculaId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Funciones__SalaI__2B3F6F97">
+        <Association Name="FK__GCC_Funci__SalaI__08D548FA">
           <End Role="GCC_Salas" Type="Self.GCC_Salas" Multiplicity="0..1" />
-          <End Role="Funciones" Type="Self.Funciones" Multiplicity="*" />
+          <End Role="GCC_Funciones" Type="Self.GCC_Funciones" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="GCC_Salas">
               <PropertyRef Name="SalaId" />
             </Principal>
-            <Dependent Role="Funciones">
+            <Dependent Role="GCC_Funciones">
               <PropertyRef Name="SalaId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__GCC_Silla__SalaI__2E1BDC42">
+        <Association Name="FK__GCC_Silla__SalaI__041093DD">
           <End Role="GCC_Salas" Type="Self.GCC_Salas" Multiplicity="0..1" />
           <End Role="GCC_Sillas" Type="Self.GCC_Sillas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -176,20 +182,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="GCCCineEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Funciones" EntityType="Self.Funciones" />
+        <EntityContainer Name="master" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="GCC_Funciones" EntityType="Self.GCC_Funciones" />
           <EntitySet Name="GCC_Peliculas" EntityType="Self.GCC_Peliculas" />
           <EntitySet Name="GCC_Salas" EntityType="Self.GCC_Salas" />
           <EntitySet Name="GCC_Sillas" EntityType="Self.GCC_Sillas" />
-          <AssociationSet Name="FK__Funciones__Pelic__2A4B4B5E" Association="Self.FK__Funciones__Pelic__2A4B4B5E">
+          <AssociationSet Name="FK__GCC_Funci__Pelic__07E124C1" Association="Self.FK__GCC_Funci__Pelic__07E124C1">
             <End Role="GCC_Peliculas" EntitySet="GCC_Peliculas" />
-            <End Role="Funciones" EntitySet="Funciones" />
+            <End Role="GCC_Funciones" EntitySet="GCC_Funciones" />
           </AssociationSet>
-          <AssociationSet Name="FK__Funciones__SalaI__2B3F6F97" Association="Self.FK__Funciones__SalaI__2B3F6F97">
+          <AssociationSet Name="FK__GCC_Funci__SalaI__08D548FA" Association="Self.FK__GCC_Funci__SalaI__08D548FA">
             <End Role="GCC_Salas" EntitySet="GCC_Salas" />
-            <End Role="Funciones" EntitySet="Funciones" />
+            <End Role="GCC_Funciones" EntitySet="GCC_Funciones" />
           </AssociationSet>
-          <AssociationSet Name="FK__GCC_Silla__SalaI__2E1BDC42" Association="Self.FK__GCC_Silla__SalaI__2E1BDC42">
+          <AssociationSet Name="FK__GCC_Silla__SalaI__041093DD" Association="Self.FK__GCC_Silla__SalaI__041093DD">
             <End Role="GCC_Salas" EntitySet="GCC_Salas" />
             <End Role="GCC_Sillas" EntitySet="GCC_Sillas" />
           </AssociationSet>
@@ -199,10 +205,10 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="GCCCineModelStoreContainer" CdmEntityContainer="GCCCineEntities">
-          <EntitySetMapping Name="Funciones">
-            <EntityTypeMapping TypeName="GCCCineModel.Funciones">
-              <MappingFragment StoreEntitySet="Funciones">
+        <EntityContainerMapping StorageEntityContainer="masterModelStoreContainer" CdmEntityContainer="master">
+          <EntitySetMapping Name="GCC_Funciones">
+            <EntityTypeMapping TypeName="masterModel.GCC_Funciones">
+              <MappingFragment StoreEntitySet="GCC_Funciones">
                 <ScalarProperty Name="FuncionId" ColumnName="FuncionId" />
                 <ScalarProperty Name="PeliculaId" ColumnName="PeliculaId" />
                 <ScalarProperty Name="SalaId" ColumnName="SalaId" />
@@ -212,29 +218,32 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="GCC_Peliculas">
-            <EntityTypeMapping TypeName="GCCCineModel.GCC_Peliculas">
+            <EntityTypeMapping TypeName="masterModel.GCC_Peliculas">
               <MappingFragment StoreEntitySet="GCC_Peliculas">
                 <ScalarProperty Name="PeliculaId" ColumnName="PeliculaId" />
                 <ScalarProperty Name="Titulo" ColumnName="Titulo" />
                 <ScalarProperty Name="Genero" ColumnName="Genero" />
                 <ScalarProperty Name="Duracion" ColumnName="Duracion" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="GCC_Salas">
-            <EntityTypeMapping TypeName="GCCCineModel.GCC_Salas">
+            <EntityTypeMapping TypeName="masterModel.GCC_Salas">
               <MappingFragment StoreEntitySet="GCC_Salas">
                 <ScalarProperty Name="SalaId" ColumnName="SalaId" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
                 <ScalarProperty Name="Capacidad" ColumnName="Capacidad" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="GCC_Sillas">
-            <EntityTypeMapping TypeName="GCCCineModel.GCC_Sillas">
+            <EntityTypeMapping TypeName="masterModel.GCC_Sillas">
               <MappingFragment StoreEntitySet="GCC_Sillas">
                 <ScalarProperty Name="SillasId" ColumnName="SillasId" />
                 <ScalarProperty Name="SalaId" ColumnName="SalaId" />
+                <ScalarProperty Name="Row" ColumnName="Row" />
                 <ScalarProperty Name="NumeroSilla" ColumnName="NumeroSilla" />
               </MappingFragment>
             </EntityTypeMapping>

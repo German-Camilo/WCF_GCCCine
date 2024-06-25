@@ -1,4 +1,4 @@
-﻿// La generación de código T4 está habilitada para el modelo 'D:\ESTUDIANDO .NET\Entity Framework\WCF_GCCCine\WCF_GCCCine\Model\ModeloGCCCine.edmx'. 
+﻿// La generación de código T4 está habilitada para el modelo 'D:\UNIDAD_VICTIMAS\WCF_GCCCine\WCF_GCCCine\Model\Model1.edmx'. 
 // Para habilitar la generación de código heredada, cambie el valor de la propiedad del diseñador 'Estrategia de generación de código'
 // por 'ObjectContext heredado'. Esta propiedad está disponible en la ventana Propiedades cuando se abre
 // el modelo en el diseñador.

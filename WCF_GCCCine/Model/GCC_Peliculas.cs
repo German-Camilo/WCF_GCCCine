@@ -11,22 +11,22 @@ namespace WCF_GCCCine.Model
 {
     using System;
     using System.Collections.Generic;
-    using WCF_GCCCine.Clases;
-
+    
     public partial class GCC_Peliculas
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public GCC_Peliculas()
         {
-            this.Funciones = new HashSet<Funciones>();
+            this.GCC_Funciones = new HashSet<GCC_Funciones>();
         }
     
         public int PeliculaId { get; set; }
         public string Titulo { get; set; }
         public string Genero { get; set; }
         public Nullable<int> Duracion { get; set; }
+        public Nullable<decimal> Rating { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Funciones> Funciones { get; set; }
+        public virtual ICollection<GCC_Funciones> GCC_Funciones { get; set; }
     }
 }

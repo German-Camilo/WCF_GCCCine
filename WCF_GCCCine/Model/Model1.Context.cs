@@ -12,12 +12,11 @@ namespace WCF_GCCCine.Model
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using WCF_GCCCine.Clases;
-
-    public partial class GCCCineEntities : DbContext
+    
+    public partial class master : DbContext
     {
-        public GCCCineEntities()
-            : base("name=GCCCineEntities")
+        public master()
+            : base("name=master")
         {
         }
     
@@ -26,7 +25,7 @@ namespace WCF_GCCCine.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Funciones> Funciones { get; set; }
+        public virtual DbSet<GCC_Funciones> GCC_Funciones { get; set; }
         public virtual DbSet<GCC_Peliculas> GCC_Peliculas { get; set; }
         public virtual DbSet<GCC_Salas> GCC_Salas { get; set; }
         public virtual DbSet<GCC_Sillas> GCC_Sillas { get; set; }

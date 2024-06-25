@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c79f1be43d60445495e514bd685eae27" Name="Diagram1">
+        <EntityTypeShape EntityType="masterModel.GCC_Funciones" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.GCC_Peliculas" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.GCC_Salas" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="masterModel.GCC_Sillas" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <AssociationConnector Association="masterModel.FK__GCC_Funci__Pelic__07E124C1" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__GCC_Funci__SalaI__08D548FA" ManuallyRouted="false" />
+        <AssociationConnector Association="masterModel.FK__GCC_Silla__SalaI__041093DD" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
